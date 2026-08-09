@@ -30,10 +30,9 @@ jobs:
           npm install -g javascript-obfuscator
           sudo apt-get install -y curl
 
-      - name: Download and extract latest BPB worker
+      - name: Download v4.1.0 BPB worker
         run: |
-          LATEST_URL=$(curl -s https://api.github.com/repos/bia-pain-bache/BPB-Worker-Panel/releases/latest | grep "browser_download_url.*worker.js" | cut -d '"' -f 4)
-          wget "$LATEST_URL" -O origin.js
+          wget https://github.com/bia-pain-bache/BPB-Worker-Panel/releases/download/v4.1.0/worker.js -O origin.js
           javascript-obfuscator origin.js --output _worker.js \
             --compact true \
             --identifier-names-generator hexadecimal \
